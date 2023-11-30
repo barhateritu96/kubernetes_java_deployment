@@ -1,4 +1,4 @@
-package com.example.springbootmanagementexample;
+/*package com.example.springbootmanagementexample;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -35,5 +35,23 @@ public class SimpleRestController implements HealthIndicator {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(e.getMessage());
         }
+    }
+}*/
+
+package uk.co.danielbryant.djshopping.stcokmanager.healthchecks;
+
+import com.codahale.metrics.health.HealthCheck;
+
+public class BasicHealthCheck extends HealthCheck {
+
+    private final String version;
+
+    public BasicHealthCheck(String version) {
+        this.version = version;
+    }
+
+    @Override
+    protected Result check() throws Exception {
+        return Result.healthy("Ok with version: " + version);
     }
 }
